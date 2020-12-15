@@ -18,6 +18,7 @@ namespace notepad
         private void button1_Click(object sender, EventArgs e)
         {
             textBox.SelectionStart = textBox.Find(textBox1.Text, textBox.SelectionStart, textBox.Text.Length, RichTextBoxFinds.None);
+            textBox.SelectionLength = textBox1.Text.Length;
         }
 
         private void button2_Click(object sender, EventArgs e)

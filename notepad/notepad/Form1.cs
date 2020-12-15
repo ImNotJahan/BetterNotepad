@@ -19,173 +19,43 @@ namespace notepad
         private string originalText = "";
         private string fileName = "Untitled.txt";
 
-        private MainMenu mainMenu;
-
         bool[] formattingThings = { false, false, false }; //0 is bold 1 is italic and 2 is underlined
         bool formattingEnabled = false;
 
-        MenuItem wordWrapMenuItem;
-        MenuItem formattingMenuItem;
-        MenuItem boldMenuItem;
-        MenuItem italicMenuItem;
-        MenuItem underlineMenuItem;
         public Form1()
         {
             InitializeComponent();
 
-            mainMenu = new MainMenu();
-
-            MenuItem File = mainMenu.MenuItems.Add("&File");
-
-            MenuItem newMenuItem = new MenuItem("&New");
             newMenuItem.Click += new EventHandler(NewFile);
-            newMenuItem.Shortcut = Shortcut.CtrlN;
-
-            MenuItem newWindowMenuItem = new MenuItem("&New Window");
             newWindowMenuItem.Click += new EventHandler(OpenNewWindow);
-            newWindowMenuItem.Shortcut = Shortcut.CtrlShiftN;
-
-            MenuItem OpenMenuItem = new MenuItem("&Open...");
             OpenMenuItem.Click += new EventHandler(OpenFile);
-            OpenMenuItem.Shortcut = Shortcut.CtrlO;
-
-            MenuItem saveMenuItem = new MenuItem("&Save");
             saveMenuItem.Click += new EventHandler(SaveFileLow);
-            saveMenuItem.Shortcut = Shortcut.CtrlS;
-
-            MenuItem saveAsMenuItem = new MenuItem("&Save As...");
-            saveAsMenuItem.Click += new EventHandler(SaveFileE);
-            saveAsMenuItem.Shortcut = Shortcut.CtrlShiftS;
-
-            MenuItem printMenuItem = new MenuItem("&Print");
-            printMenuItem.Click += new EventHandler(PrintFile);
-            printMenuItem.Shortcut = Shortcut.CtrlP;
-
-            MenuItem exitMenuItem = new MenuItem("&Exit");
+            exitMenuItem.Click += new EventHandler(SaveFileE);
+            saveAsMenuItem.Click += new EventHandler(PrintFile);
             exitMenuItem.Click += new EventHandler(Exit);
-            exitMenuItem.Shortcut = Shortcut.AltF4;
 
-            File.MenuItems.Add(newMenuItem);
-            File.MenuItems.Add(newWindowMenuItem);
-            File.MenuItems.Add(OpenMenuItem);
-            File.MenuItems.Add(saveMenuItem);
-            File.MenuItems.Add(saveAsMenuItem);
-            File.MenuItems.Add("-");
-
-            File.MenuItems.Add(printMenuItem);
-            File.MenuItems.Add("-");
-
-            File.MenuItems.Add(exitMenuItem);
-
-            MenuItem Edit = mainMenu.MenuItems.Add("&Edit");
-
-            MenuItem undoMenuItem = new MenuItem("&Undo");
             undoMenuItem.Click += new EventHandler(Undo);
-            undoMenuItem.Shortcut = Shortcut.CtrlZ;
-
-            MenuItem redoMenuItem = new MenuItem("&Redo");
             redoMenuItem.Click += new EventHandler(Redo);
-            redoMenuItem.Shortcut = Shortcut.CtrlShiftZ;
-
-            MenuItem cutMenuItem = new MenuItem("&Cut");
             cutMenuItem.Click += new EventHandler(Cut);
-            cutMenuItem.Shortcut = Shortcut.CtrlX;
-       
-            MenuItem copyMenuItem = new MenuItem("&Copy");
             copyMenuItem.Click += new EventHandler(Copy);
-            copyMenuItem.Shortcut = Shortcut.CtrlC;
-
-            MenuItem pasteMenuItem = new MenuItem("&Paste");
             pasteMenuItem.Click += new EventHandler(Paste);
-            pasteMenuItem.Shortcut = Shortcut.CtrlV;
-
-            MenuItem deleteMenuItem = new MenuItem("&Delete");
             deleteMenuItem.Click += new EventHandler(Delete);
-            deleteMenuItem.Shortcut = Shortcut.Del;
-
-            MenuItem searchMenuItem = new MenuItem("&Search with Google...");
             searchMenuItem.Click += new EventHandler(Search);
-            searchMenuItem.Shortcut = Shortcut.CtrlE;
-
-            MenuItem findMenuItem = new MenuItem("&Find...");
             findMenuItem.Click += new EventHandler(Find);
-            findMenuItem.Shortcut = Shortcut.CtrlF;
-
-            MenuItem replaceMenuItem = new MenuItem("&Replace...");
             replaceMenuItem.Click += new EventHandler(Replace);
-            replaceMenuItem.Shortcut = Shortcut.CtrlH;
-
-            MenuItem selectAllMenuItem = new MenuItem("&Select All");
             selectAllMenuItem.Click += new EventHandler(SelectAll);
-            selectAllMenuItem.Shortcut = Shortcut.CtrlA;
-
-            MenuItem timeAndDateMenuItem = new MenuItem("&Time/Date");
             timeAndDateMenuItem.Click += new EventHandler(TimeDate);
-            timeAndDateMenuItem.Shortcut = Shortcut.F5;
 
-            Edit.MenuItems.Add(undoMenuItem);
-            Edit.MenuItems.Add(redoMenuItem);
-            Edit.MenuItems.Add("-");
-
-            Edit.MenuItems.Add(cutMenuItem);
-            Edit.MenuItems.Add(copyMenuItem);
-            Edit.MenuItems.Add(pasteMenuItem);
-            Edit.MenuItems.Add(deleteMenuItem);
-            Edit.MenuItems.Add("-");
-
-            Edit.MenuItems.Add(searchMenuItem);
-            Edit.MenuItems.Add(findMenuItem);
-            Edit.MenuItems.Add(replaceMenuItem);
-            Edit.MenuItems.Add("-");
-
-            Edit.MenuItems.Add(selectAllMenuItem);
-            Edit.MenuItems.Add(timeAndDateMenuItem);
-
-            MenuItem Format = mainMenu.MenuItems.Add("&Format");
-
-            wordWrapMenuItem = new MenuItem("&Word Wrap");
             wordWrapMenuItem.Click += new EventHandler(WordWrap);
-            wordWrapMenuItem.Checked = true;
-
-            formattingMenuItem = new MenuItem("&Formatting?");
             formattingMenuItem.Click += new EventHandler(Formatting);
-            formattingMenuItem.Shortcut = Shortcut.F3;
-
-            boldMenuItem = new MenuItem("&Bold");
             boldMenuItem.Click += new EventHandler(Bold);
-            boldMenuItem.Shortcut = Shortcut.CtrlB;
-
-            italicMenuItem = new MenuItem("&Italic");
             italicMenuItem.Click += new EventHandler(Italic);
-            italicMenuItem.Shortcut = Shortcut.CtrlI;
-
-            underlineMenuItem = new MenuItem("&Underline");
             underlineMenuItem.Click += new EventHandler(Underline);
-            underlineMenuItem.Shortcut = Shortcut.CtrlU;
 
-            Format.MenuItems.Add(wordWrapMenuItem);
-            Format.MenuItems.Add("-");
-            Format.MenuItems.Add(formattingMenuItem);
-            Format.MenuItems.Add("-");
-            Format.MenuItems.Add(boldMenuItem);
-            Format.MenuItems.Add(italicMenuItem);
-            Format.MenuItems.Add(underlineMenuItem);
-
-            MenuItem View = mainMenu.MenuItems.Add("&View");
-
-            MenuItem About = mainMenu.MenuItems.Add("&Help");
-
-            MenuItem aboutMenuItem = new MenuItem("&About Notepad");
             aboutMenuItem.Click += new EventHandler(AboutBoxThing);
-
-            MenuItem sendFeedbackMenuItem = new MenuItem("&Send Feedback");
             sendFeedbackMenuItem.Click += new EventHandler(SendFeeback);
 
-            About.MenuItems.Add(sendFeedbackMenuItem);
-            About.MenuItems.Add("-");
-            About.MenuItems.Add(aboutMenuItem);
-
-            Menu = mainMenu;
+            menuStrip1.Renderer = new ToolStripProfessionalRenderer(new CustomColorTable());
         }
 
         private void SendFeeback(object sender, EventArgs e)
@@ -295,24 +165,18 @@ namespace notepad
         {
             formattingThings[0] = !formattingThings[0];
             FormattingChange();
-
-            boldMenuItem.Checked = !boldMenuItem.Checked;
         }
 
         private void Italic(object sender, EventArgs e)
         {
             formattingThings[1] = !formattingThings[1];
             FormattingChange();
-
-            italicMenuItem.Checked = !italicMenuItem.Checked;
         }
 
         private void Underline(object sender, EventArgs e)
         {
             formattingThings[2] = !formattingThings[2];
             FormattingChange();
-
-            underlineMenuItem.Checked = !underlineMenuItem.Checked;
         }
 
         bool[] noFormatting = { false, false, false };
@@ -329,7 +193,7 @@ namespace notepad
         private const int DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1 = 19;
         private const int DWMWA_USE_IMMERSIVE_DARK_MODE = 20;
 
-        [DllImport("DwmApi")] //System.Runtime.InteropServices
+        [DllImport("DwmApi")]
         private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
 
         protected override void OnHandleCreated(EventArgs e)
@@ -369,7 +233,6 @@ namespace notepad
 
         private void WordWrap(object sender, EventArgs e)
         {
-            wordWrapMenuItem.Checked = !wordWrapMenuItem.Checked;
             richTextBox1.WordWrap = wordWrapMenuItem.Checked;
         }
 
@@ -385,6 +248,16 @@ namespace notepad
 
         private void Exit(object sender, EventArgs e)
         {
+            if (hasUnsavedProgress)
+            {
+                if (MessageBox.Show($"Do you want to save changes to {fileName}", "Notepad", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    SaveFile();
+                }
+            }
+
+            hasUnsavedProgress = false;
+
             Application.Exit();
         }
 
@@ -430,7 +303,7 @@ namespace notepad
         private void WinResizeEnd(object sender, EventArgs e)
         {
             if(loaded)
-                richTextBox1.Size = new Size(ActiveForm.Size.Width - 16, ActiveForm.Size.Height - 70);
+                richTextBox1.Size = new Size(ActiveForm.Size.Width - 16, ActiveForm.Size.Height - 98);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -517,6 +390,44 @@ namespace notepad
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+    }
+
+    public class CustomColorTable : ProfessionalColorTable
+    {
+        public override Color ToolStripDropDownBackground
+        {
+            get { return Color.FromArgb(60, 60, 60); }
+        }
+
+        public override Color MenuItemSelected
+        {
+            get { return Color.DarkSlateGray; }
+        }
+
+        public override Color ImageMarginGradientBegin
+        {
+            get { return Color.FromArgb(40, 40, 40); }
+        }
+
+        public override Color ImageMarginGradientEnd
+        {
+            get { return Color.FromArgb(40, 40, 40); }
+        }
+
+        public override Color ImageMarginGradientMiddle
+        {
+            get { return Color.FromArgb(40, 40, 40); }
+        }
+
+        public override Color SeparatorDark
+        {
+            get { return Color.FromArgb(40, 40, 40); }
+        }
+
+        public override Color CheckBackground
+        {
+            get { return Color.FromArgb(100, 100, 100); }
         }
     }
 }
