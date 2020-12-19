@@ -391,6 +391,19 @@ namespace notepad
         {
             Application.Exit();
         }
+
+        private void FormFocused(object sender, EventArgs e)
+        {
+            int properSelectionStart = richTextBox1.SelectionStart;
+            int properSelectionLength = richTextBox1.SelectionLength;
+
+            richTextBox1.SelectionStart = 0;
+            richTextBox1.SelectionLength = richTextBox1.Text.Length;
+            richTextBox1.SelectionBackColor = Color.FromArgb(40, 40, 40);
+
+            richTextBox1.SelectionStart = properSelectionStart;
+            richTextBox1.SelectionLength = properSelectionLength;
+        }
     }
 
     public class CustomColorTable : ProfessionalColorTable

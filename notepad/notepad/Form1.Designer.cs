@@ -501,6 +501,7 @@
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Untitled.txt - Notepad";
+            this.Activated += new System.EventHandler(this.FormFocused);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WinClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.WinResizeEnd);
