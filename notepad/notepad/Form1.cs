@@ -426,28 +426,34 @@ namespace notepad
             if (textBox.SelectionFont.Bold)
             {
                 boldMenuItem.Checked = true;
+                formattingThings[0] = true;
             }
             else
             {
                 boldMenuItem.Checked = false;
+                formattingThings[0] = false;
             }
 
             if (textBox.SelectionFont.Italic)
             {
                 italicMenuItem.Checked = true;
+                formattingThings[1] = true;
             }
             else
             {
                 italicMenuItem.Checked = false;
+                formattingThings[1] = false;
             }
 
             if (textBox.SelectionFont.Underline)
             {
                 underlineMenuItem.Checked = true;
+                formattingThings[2] = true;
             }
             else
             {
                 underlineMenuItem.Checked = false;
+                formattingThings[2] = false;
             }
         }
     }
