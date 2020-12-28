@@ -1,6 +1,6 @@
 ﻿namespace notepad
 {
-    partial class findBox
+    partial class FindBox
     {
         /// <summary>
         /// Required designer variable.
@@ -29,161 +29,118 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.groupBox1.SuspendLayout();
+            this.findInput = new System.Windows.Forms.TextBox();
+            this.findNextButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.matchCaseCheckbox = new System.Windows.Forms.CheckBox();
+            this.wrapAroundCheckbox = new System.Windows.Forms.CheckBox();
+            this.wholeWordCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(14, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Find what";
             // 
-            // textBox1
+            // findInput
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.textBox1.Location = new System.Drawing.Point(88, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(214, 22);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.findInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.findInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.findInput.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.findInput.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.findInput.Location = new System.Drawing.Point(88, 13);
+            this.findInput.Name = "findInput";
+            this.findInput.Size = new System.Drawing.Size(214, 22);
+            this.findInput.TabIndex = 1;
+            this.findInput.TextChanged += new System.EventHandler(this.FindInputTextChanged);
             // 
-            // button1
+            // findNextButton
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.button1.Enabled = false;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(309, 11);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 31);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Find Next";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.findNextButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.findNextButton.Enabled = false;
+            this.findNextButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.findNextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.findNextButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.findNextButton.Location = new System.Drawing.Point(309, 11);
+            this.findNextButton.Name = "findNextButton";
+            this.findNextButton.Size = new System.Drawing.Size(82, 31);
+            this.findNextButton.TabIndex = 2;
+            this.findNextButton.Text = "Find Next";
+            this.findNextButton.UseVisualStyleBackColor = false;
+            this.findNextButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // cancelButton
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(309, 48);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 31);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.cancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cancelButton.Location = new System.Drawing.Point(309, 48);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(82, 31);
+            this.cancelButton.TabIndex = 3;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = false;
+            this.cancelButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // groupBox1
+            // matchCaseCheckbox
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox1.Location = new System.Drawing.Point(172, 42);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(129, 53);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Direction";
+            this.matchCaseCheckbox.AutoSize = true;
+            this.matchCaseCheckbox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.matchCaseCheckbox.Location = new System.Drawing.Point(12, 41);
+            this.matchCaseCheckbox.Name = "matchCaseCheckbox";
+            this.matchCaseCheckbox.Size = new System.Drawing.Size(104, 21);
+            this.matchCaseCheckbox.TabIndex = 5;
+            this.matchCaseCheckbox.Text = "Match Case";
+            this.matchCaseCheckbox.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // wrapAroundCheckbox
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.radioButton2.Location = new System.Drawing.Point(59, 26);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(64, 21);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "Down";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.wrapAroundCheckbox.AutoSize = true;
+            this.wrapAroundCheckbox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.wrapAroundCheckbox.Location = new System.Drawing.Point(12, 68);
+            this.wrapAroundCheckbox.Name = "wrapAroundCheckbox";
+            this.wrapAroundCheckbox.Size = new System.Drawing.Size(114, 21);
+            this.wrapAroundCheckbox.TabIndex = 6;
+            this.wrapAroundCheckbox.Text = "Wrap Around";
+            this.wrapAroundCheckbox.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // wholeWordCheckbox
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.radioButton1.Location = new System.Drawing.Point(6, 26);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 21);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Up";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.wholeWordCheckbox.AutoSize = true;
+            this.wholeWordCheckbox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.wholeWordCheckbox.Location = new System.Drawing.Point(12, 95);
+            this.wholeWordCheckbox.Name = "wholeWordCheckbox";
+            this.wholeWordCheckbox.Size = new System.Drawing.Size(108, 21);
+            this.wholeWordCheckbox.TabIndex = 7;
+            this.wholeWordCheckbox.Text = "Whole Word";
+            this.wholeWordCheckbox.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.checkBox1.Location = new System.Drawing.Point(12, 78);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(104, 21);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Match Case";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.checkBox2.Location = new System.Drawing.Point(12, 105);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(114, 21);
-            this.checkBox2.TabIndex = 6;
-            this.checkBox2.Text = "Wrap Around";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.checkBox3.Location = new System.Drawing.Point(12, 132);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(108, 21);
-            this.checkBox3.TabIndex = 7;
-            this.checkBox3.Text = "Whole Word";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // findBox
+            // FindBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(399, 163);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(399, 122);
+            this.Controls.Add(this.wholeWordCheckbox);
+            this.Controls.Add(this.wrapAroundCheckbox);
+            this.Controls.Add(this.matchCaseCheckbox);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.findNextButton);
+            this.Controls.Add(this.findInput);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "findBox";
+            this.Name = "FindBox";
             this.ShowIcon = false;
             this.Text = "findBox";
             this.Deactivate += new System.EventHandler(this.findBox_Deactivate);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,14 +149,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.TextBox findInput;
+        private System.Windows.Forms.Button findNextButton;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.CheckBox matchCaseCheckbox;
+        private System.Windows.Forms.CheckBox wrapAroundCheckbox;
+        private System.Windows.Forms.CheckBox wholeWordCheckbox;
     }
 }

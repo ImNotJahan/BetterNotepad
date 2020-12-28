@@ -73,40 +73,43 @@ namespace notepad
 
         private void Redo(object sender, EventArgs e)
         {
-            richTextBox1.Redo();
+            textBox.Redo();
         }
 
         private void TimeDate(object sender, EventArgs e)
         {
-            richTextBox1.Text = richTextBox1.Text.Insert(richTextBox1.SelectionStart, DateTime.Now.ToString("hh:mm tt MM/dd/yyyy"));
+            textBox.Text = textBox.Text.Insert(textBox.SelectionStart, DateTime.Now.ToString("hh:mm tt MM/dd/yyyy"));
         }
 
         private void SelectAll(object sender, EventArgs e)
         {
-            richTextBox1.SelectAll();
+            textBox.SelectAll();
         }
 
+        ReplaceBox replaceBox;
         private void Replace(object sender, EventArgs e)
         {
-            ReplaceBox replaceBox = new ReplaceBox();
+            replaceBox = new ReplaceBox();
             replaceBox.Show(this);
         }
 
+        FindBox findBox;
         private void Find(object sender, EventArgs e)
         {
-            findBox findBox0 = new findBox();
-            findBox0.Show(this);
+            findBox = new FindBox();
+            findBox.Show(this);
         }
 
+        AboutBox1 about;
         private void AboutBoxThing(object sender, EventArgs e)
         {
-            AboutBox1 about = new AboutBox1();
+            about = new AboutBox1();
             about.ShowDialog(this);
         }
 
         private void Search(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start($"http://google.com/search?q={RemoveSpecialCharacters(richTextBox1.SelectedText).Replace(" ", "+")}");
+            System.Diagnostics.Process.Start($"http://google.com/search?q={RemoveSpecialCharacters(textBox.SelectedText).Replace(" ", "+")}");
         }
 
         private string RemoveSpecialCharacters(string str)
@@ -124,41 +127,52 @@ namespace notepad
 
         private void Delete(object sender, EventArgs e)
         {
-            if(richTextBox1.SelectedText == string.Empty)
+            if(textBox.SelectedText == string.Empty)
             {
-                int index = richTextBox1.SelectionStart;
+                int index = textBox.SelectionStart;
 
-                if(index < richTextBox1.Text.Length)
+                if(index < textBox.Text.Length)
                 {
-                    richTextBox1.Text = richTextBox1.Text.Remove(index, 1);
-                    richTextBox1.SelectionStart = index;
+                    textBox.Text = textBox.Text.Remove(index, 1);
+                    textBox.SelectionStart = index;
                 }
             }
             else
             {
-                richTextBox1.SelectedText = string.Empty;
+                textBox.SelectedText = string.Empty;
             }
         }
 
         private void Paste(object sender, EventArgs e)
         {
-            richTextBox1.SelectedText = Clipboard.GetText();
+            int prevSelectionStart = textBox.SelectionStart;
+            textBox.SelectedText = Clipboard.GetText();
+
+            if (!formattingEnabled)
+            {
+                textBox.SelectionStart = prevSelectionStart;
+                textBox.SelectionLength = Clipboard.GetText().Length;
+                textBox.SelectionFont = new Font("Consolas", 11, FontStyle.Regular);
+                textBox.SelectionFont = new Font("Consolas", 11, FontStyle.Regular);
+                textBox.SelectionFont = new Font("Consolas", 11, FontStyle.Regular);
+                textBox.SelectionStart = textBox.SelectionLength + prevSelectionStart;
+            }
         }
 
         private void Copy(object sender, EventArgs e)
         {
-            Clipboard.SetText(richTextBox1.SelectedText);
+            Clipboard.SetText(textBox.SelectedText);
         }
 
         private void Cut(object sender, EventArgs e)
         {
-            Clipboard.SetText(richTextBox1.SelectedText);
-            richTextBox1.SelectedText = string.Empty;
+            Clipboard.SetText(textBox.SelectedText);
+            textBox.SelectedText = string.Empty;
         }
 
         private void Undo(object sender, EventArgs e)
         {
-            richTextBox1.Undo();
+            textBox.Undo();
         }
 
         private void Bold(object sender, EventArgs e)
@@ -206,34 +220,34 @@ namespace notepad
         {
             if (formattingThings.SequenceEqual(noFormatting) || !formattingEnabled)
             {
-                richTextBox1.SelectionFont = new Font("Consolas", 11, FontStyle.Regular);
+                textBox.SelectionFont = new Font("Consolas", 11, FontStyle.Regular);
             } else if(formattingThings.SequenceEqual(bFormatting))
             {
-                richTextBox1.SelectionFont = new Font("Consolas", 11, FontStyle.Bold);
+                textBox.SelectionFont = new Font("Consolas", 11, FontStyle.Bold);
             } else if(formattingThings.SequenceEqual(iFormatting))
             {
-                richTextBox1.SelectionFont = new Font("Consolas", 11, FontStyle.Italic);
+                textBox.SelectionFont = new Font("Consolas", 11, FontStyle.Italic);
             } else if(formattingThings.SequenceEqual(uFormatting))
             {
-                richTextBox1.SelectionFont = new Font("Consolas", 11, FontStyle.Underline);
+                textBox.SelectionFont = new Font("Consolas", 11, FontStyle.Underline);
             } else if(formattingThings.SequenceEqual(bIFormatting))
             {
-                richTextBox1.SelectionFont = new Font("Consolas", 11, FontStyle.Bold | FontStyle.Italic);
+                textBox.SelectionFont = new Font("Consolas", 11, FontStyle.Bold | FontStyle.Italic);
             } else if(formattingThings.SequenceEqual(iUFormatting))
             {
-                richTextBox1.SelectionFont = new Font("Consolas", 11, FontStyle.Italic | FontStyle.Underline);
+                textBox.SelectionFont = new Font("Consolas", 11, FontStyle.Italic | FontStyle.Underline);
             } else if(formattingThings.SequenceEqual(bUFormatting))
             {
-                richTextBox1.SelectionFont = new Font("Consolas", 11, FontStyle.Bold | FontStyle.Underline);
+                textBox.SelectionFont = new Font("Consolas", 11, FontStyle.Bold | FontStyle.Underline);
             } else
             {
-                richTextBox1.SelectionFont = new Font("Consolas", 11, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline);
+                textBox.SelectionFont = new Font("Consolas", 11, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline);
             }
         }
 
         private void WordWrap(object sender, EventArgs e)
         {
-            richTextBox1.WordWrap = wordWrapMenuItem.Checked;
+            textBox.WordWrap = wordWrapMenuItem.Checked;
         }
 
         private void PrintFile(object sender, EventArgs e)
@@ -268,7 +282,7 @@ namespace notepad
                 FileStream fParameter = new FileStream(path, FileMode.Create, FileAccess.Write);
                 StreamWriter m_WriterParameter = new StreamWriter(fParameter);
 
-                m_WriterParameter.Write(richTextBox1.Text);
+                m_WriterParameter.Write(textBox.Text);
                 m_WriterParameter.Flush();
                 m_WriterParameter.Close();
 
@@ -291,7 +305,7 @@ namespace notepad
             path = openFileDialog1.FileName;
             string text = File.ReadAllText(path);
 
-            richTextBox1.Text = text;
+            textBox.Text = text;
             originalText = text;
             fileLoaded = true;
             fileName = path.Split('\\')[path.Split('\\').Length - 1];
@@ -302,8 +316,10 @@ namespace notepad
 
         private void WinResizeEnd(object sender, EventArgs e)
         {
-            if(loaded)
-                richTextBox1.Size = new Size(ActiveForm.Size.Width - 16, ActiveForm.Size.Height - 98);
+            if (loaded)
+            {
+                textBox.Size = new Size(ActiveForm.Size.Width - 16, ActiveForm.Size.Height - 98);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -321,7 +337,7 @@ namespace notepad
                     SaveFile();
                 }
             }
-            richTextBox1.Clear();
+            textBox.Clear();
 
             hasUnsavedProgress = false;
         }
@@ -346,7 +362,7 @@ namespace notepad
             FileStream fParameter = new FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write);
             StreamWriter m_WriterParameter = new StreamWriter(fParameter);
 
-            m_WriterParameter.Write(richTextBox1.Text);
+            m_WriterParameter.Write(textBox.Text);
             m_WriterParameter.Flush();
             m_WriterParameter.Close();
 
@@ -359,7 +375,7 @@ namespace notepad
 
         private void TextChange(object sender, EventArgs e)
         {
-            if(richTextBox1.Text != originalText)
+            if(textBox.Text != originalText)
             {
                 ActiveForm.Text = $"*{fileName} - Notepad";
                 hasUnsavedProgress = true;
@@ -384,7 +400,7 @@ namespace notepad
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawString(richTextBox1.Text, new Font("Consolas", 11), Brushes.Black, 120, 150);
+            e.Graphics.DrawString(textBox.Text, new Font("Consolas", 11), Brushes.Black, 120, 150);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -394,15 +410,45 @@ namespace notepad
 
         private void FormFocused(object sender, EventArgs e)
         {
-            int properSelectionStart = richTextBox1.SelectionStart;
-            int properSelectionLength = richTextBox1.SelectionLength;
+            int properSelectionStart = textBox.SelectionStart;
+            int properSelectionLength = textBox.SelectionLength;
 
-            richTextBox1.SelectionStart = 0;
-            richTextBox1.SelectionLength = richTextBox1.Text.Length;
-            richTextBox1.SelectionBackColor = Color.FromArgb(40, 40, 40);
+            textBox.SelectionStart = 0;
+            textBox.SelectionLength = textBox.Text.Length;
+            textBox.SelectionBackColor = Color.FromArgb(30, 30, 30);
 
-            richTextBox1.SelectionStart = properSelectionStart;
-            richTextBox1.SelectionLength = properSelectionLength;
+            textBox.SelectionStart = properSelectionStart;
+            textBox.SelectionLength = properSelectionLength;
+        }
+
+        private void textBox_SelectionChanged(object sender, EventArgs e)
+        {
+            if (textBox.SelectionFont.Bold)
+            {
+                boldMenuItem.Checked = true;
+            }
+            else
+            {
+                boldMenuItem.Checked = false;
+            }
+
+            if (textBox.SelectionFont.Italic)
+            {
+                italicMenuItem.Checked = true;
+            }
+            else
+            {
+                italicMenuItem.Checked = false;
+            }
+
+            if (textBox.SelectionFont.Underline)
+            {
+                underlineMenuItem.Checked = true;
+            }
+            else
+            {
+                underlineMenuItem.Checked = false;
+            }
         }
     }
 

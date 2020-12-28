@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.textBox = new System.Windows.Forms.RichTextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
@@ -75,20 +75,21 @@
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // textBox
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Consolas", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.ForeColor = System.Drawing.Color.White;
-            this.richTextBox1.Location = new System.Drawing.Point(-1, 28);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.richTextBox1.Size = new System.Drawing.Size(802, 422);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.TextChange);
+            this.textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox.Font = new System.Drawing.Font("Consolas", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox.ForeColor = System.Drawing.Color.White;
+            this.textBox.Location = new System.Drawing.Point(-1, 28);
+            this.textBox.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox.Name = "textBox";
+            this.textBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.textBox.Size = new System.Drawing.Size(802, 422);
+            this.textBox.TabIndex = 0;
+            this.textBox.Text = "";
+            this.textBox.SelectionChanged += new System.EventHandler(this.textBox_SelectionChanged);
+            this.textBox.TextChanged += new System.EventHandler(this.TextChange);
             // 
             // openFileDialog1
             // 
@@ -116,7 +117,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(801, 28);
             this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Text = "menu";
             // 
             // fileToolStripMenuItem
             // 
@@ -494,7 +495,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(801, 450);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.textBox);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -517,7 +518,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
-        public System.Windows.Forms.RichTextBox richTextBox1;
+        public System.Windows.Forms.RichTextBox textBox;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
