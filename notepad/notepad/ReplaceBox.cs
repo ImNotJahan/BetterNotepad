@@ -90,6 +90,7 @@ namespace notepad
 
         private void button3_Click(object sender, EventArgs e)
         {
+            SelectNextWord();
             while(textBox.SelectionLength > 0)
             {
                 textBox.Text = textBox.Text.Remove(textBox.SelectionStart, textBox.SelectionLength)

@@ -264,9 +264,13 @@ namespace notepad
         {
             if (hasUnsavedProgress)
             {
-                if (MessageBox.Show($"Do you want to save changes to {fileName}", "Notepad", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DialogResult saveDialog = MessageBox.Show($"Do you want to save changes to {fileName}", "Notepad", MessageBoxButtons.YesNoCancel);
+                if (saveDialog == DialogResult.Yes)
                 {
                     SaveFile();
+                } else if(saveDialog == DialogResult.Cancel)
+                {
+
                 }
             }
 
@@ -332,14 +336,17 @@ namespace notepad
         {
             if (hasUnsavedProgress)
             {
-                if(MessageBox.Show($"Do you want to save changes to {fileName}", "Notepad", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DialogResult saveDialog = MessageBox.Show($"Do you want to save changes to {fileName}", "Notepad", MessageBoxButtons.YesNoCancel);
+                if (saveDialog == DialogResult.Yes)
                 {
                     SaveFile();
+                } else if(saveDialog == DialogResult.No)
+                {
+                    textBox.Clear();
+
+                    hasUnsavedProgress = false;
                 }
             }
-            textBox.Clear();
-
-            hasUnsavedProgress = false;
         }
 
         private void OpenNewWindow(object sender, EventArgs e)
@@ -357,20 +364,23 @@ namespace notepad
             saveFileDialog1.Title = "Save As";
             saveFileDialog1.FileName = $"{fileName}";
 
-            saveFileDialog1.ShowDialog();
+            DialogResult saveDialog = saveFileDialog1.ShowDialog();
 
-            FileStream fParameter = new FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write);
-            StreamWriter m_WriterParameter = new StreamWriter(fParameter);
+            if (saveDialog == DialogResult.OK)
+            {
+                FileStream fParameter = new FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write);
+                StreamWriter m_WriterParameter = new StreamWriter(fParameter);
 
-            m_WriterParameter.Write(textBox.Text);
-            m_WriterParameter.Flush();
-            m_WriterParameter.Close();
+                m_WriterParameter.Write(textBox.Text);
+                m_WriterParameter.Flush();
+                m_WriterParameter.Close();
 
-            ActiveForm.Text = $"{fileName} - Notepad";
-            hasUnsavedProgress = false;
+                ActiveForm.Text = $"{fileName} - Notepad";
+                hasUnsavedProgress = false;
 
-            fileLoaded = true;
-            path = saveFileDialog1.FileName;
+                fileLoaded = true;
+                path = saveFileDialog1.FileName;
+            }
         }
 
         private void TextChange(object sender, EventArgs e)
@@ -391,9 +401,13 @@ namespace notepad
         {
             if (hasUnsavedProgress)
             {
-                if (MessageBox.Show($"Do you want to save changes to {fileName}", "Notepad", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DialogResult saveDialog = MessageBox.Show($"Do you want to save changes to {fileName}", "Notepad", MessageBoxButtons.YesNoCancel);
+                if (saveDialog == DialogResult.Yes)
                 {
                     SaveFile();
+                } else if(saveDialog == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
                 }
             }
         }
