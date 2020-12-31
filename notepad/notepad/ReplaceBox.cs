@@ -101,7 +101,7 @@ namespace notepad
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Hide();
+            Close();
         }
     }
 }

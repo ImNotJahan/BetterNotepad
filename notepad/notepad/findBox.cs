@@ -71,7 +71,7 @@ namespace notepad
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Hide();
+            Close();
         }
 
         private void findBox_Deactivate(object sender, EventArgs e)

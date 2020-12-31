@@ -72,6 +72,7 @@
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.sendFeedbackMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -219,7 +220,7 @@
             this.exitMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.exitMenuItem.ForeColor = System.Drawing.Color.White;
             this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.exitMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.exitMenuItem.Size = new System.Drawing.Size(266, 26);
             this.exitMenuItem.Text = "&Exit";
             // 
@@ -391,7 +392,7 @@
             this.wordWrapMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.wordWrapMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.wordWrapMenuItem.Name = "wordWrapMenuItem";
-            this.wordWrapMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.wordWrapMenuItem.Size = new System.Drawing.Size(216, 26);
             this.wordWrapMenuItem.Text = "&Word Wrap";
             // 
             // toolStripSeparator7
@@ -399,7 +400,7 @@
             this.toolStripSeparator7.BackColor = System.Drawing.SystemColors.ControlText;
             this.toolStripSeparator7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(197, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(213, 6);
             // 
             // formattingMenuItem
             // 
@@ -408,7 +409,7 @@
             this.formattingMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.formattingMenuItem.Name = "formattingMenuItem";
             this.formattingMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.formattingMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.formattingMenuItem.Size = new System.Drawing.Size(216, 26);
             this.formattingMenuItem.Text = "&Formatting?";
             // 
             // toolStripSeparator8
@@ -416,7 +417,7 @@
             this.toolStripSeparator8.BackColor = System.Drawing.SystemColors.ControlText;
             this.toolStripSeparator8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(197, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(213, 6);
             // 
             // boldMenuItem
             // 
@@ -425,7 +426,7 @@
             this.boldMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.boldMenuItem.Name = "boldMenuItem";
             this.boldMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.boldMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.boldMenuItem.Size = new System.Drawing.Size(216, 26);
             this.boldMenuItem.Text = "&Bold";
             // 
             // italicMenuItem
@@ -435,7 +436,7 @@
             this.italicMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.italicMenuItem.Name = "italicMenuItem";
             this.italicMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.italicMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.italicMenuItem.Size = new System.Drawing.Size(216, 26);
             this.italicMenuItem.Text = "&Italic";
             // 
             // underlineMenuItem
@@ -445,11 +446,13 @@
             this.underlineMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.underlineMenuItem.Name = "underlineMenuItem";
             this.underlineMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.underlineMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.underlineMenuItem.Size = new System.Drawing.Size(216, 26);
             this.underlineMenuItem.Text = "&Underline";
             // 
             // viewToolStripMenuItem
             // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsMenuItem});
             this.viewToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
@@ -471,7 +474,7 @@
             this.aboutMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.aboutMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.aboutMenuItem.Name = "aboutMenuItem";
-            this.aboutMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.aboutMenuItem.Size = new System.Drawing.Size(216, 26);
             this.aboutMenuItem.Text = "&About Notepad";
             // 
             // toolStripSeparator5
@@ -479,15 +482,25 @@
             this.toolStripSeparator5.BackColor = System.Drawing.SystemColors.Desktop;
             this.toolStripSeparator5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(185, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(213, 6);
             // 
             // sendFeedbackMenuItem
             // 
             this.sendFeedbackMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.sendFeedbackMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.sendFeedbackMenuItem.Name = "sendFeedbackMenuItem";
-            this.sendFeedbackMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.sendFeedbackMenuItem.Size = new System.Drawing.Size(216, 26);
             this.sendFeedbackMenuItem.Text = "&Send Feedback";
+            // 
+            // settingsMenuItem
+            // 
+            this.settingsMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.settingsMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.settingsMenuItem.ForeColor = System.Drawing.Color.White;
+            this.settingsMenuItem.Name = "settingsMenuItem";
+            this.settingsMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
+            this.settingsMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.settingsMenuItem.Text = "&Settings";
             // 
             // Form1
             // 
@@ -558,6 +571,7 @@
         public System.Windows.Forms.ToolStripMenuItem pasteMenuItem;
         public System.Windows.Forms.ToolStripMenuItem selectAllMenuItem;
         public System.Windows.Forms.MenuStrip menuStrip1;
+        public System.Windows.Forms.ToolStripMenuItem settingsMenuItem;
     }
 }
 

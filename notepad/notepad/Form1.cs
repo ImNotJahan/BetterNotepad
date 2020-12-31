@@ -52,10 +52,59 @@ namespace notepad
             italicMenuItem.Click += new EventHandler(Italic);
             underlineMenuItem.Click += new EventHandler(Underline);
 
+            settingsMenuItem.Click += new EventHandler(SettingsMenu);
+
             aboutMenuItem.Click += new EventHandler(AboutBoxThing);
             sendFeedbackMenuItem.Click += new EventHandler(SendFeeback);
 
             menuStrip1.Renderer = new ToolStripProfessionalRenderer(new CustomColorTable());
+
+            CheckSettings(true);
+        }
+
+        private void SettingsMenu(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.Show();
+
+            settings.FormClosed += new FormClosedEventHandler(CheckSettingsE);
+        }
+
+        private void CheckSettings(bool startupCall)
+        {
+            string[] settingsRaw;
+            string settingsFolderPath;
+            string defaultSettings = "false";
+            string settingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\BetterNotepadING\\settings.txt";
+            if (File.Exists(settingsPath))
+            {
+                settingsRaw = File.ReadAllLines(settingsPath);
+            }
+            else
+            {
+                settingsFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\BetterNotepadING";
+                Directory.CreateDirectory(settingsFolderPath);
+
+                FileStream fParameter = new FileStream(settingsPath, FileMode.Create, FileAccess.Write);
+                StreamWriter m_WriterParameter = new StreamWriter(fParameter);
+
+                m_WriterParameter.Write(defaultSettings);
+                m_WriterParameter.Flush();
+                m_WriterParameter.Close();
+
+                settingsRaw = defaultSettings.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            }
+
+            if (startupCall)
+            {
+                formattingMenuItem.Checked = bool.Parse(settingsRaw[0]);
+                formattingEnabled = bool.Parse(settingsRaw[0]);
+            }
+        }
+
+        private void CheckSettingsE(object sender, EventArgs e)
+        {
+            CheckSettings(false);
         }
 
         private void SendFeeback(object sender, EventArgs e)
@@ -262,20 +311,6 @@ namespace notepad
 
         private void Exit(object sender, EventArgs e)
         {
-            if (hasUnsavedProgress)
-            {
-                DialogResult saveDialog = MessageBox.Show($"Do you want to save changes to {fileName}", "Notepad", MessageBoxButtons.YesNoCancel);
-                if (saveDialog == DialogResult.Yes)
-                {
-                    SaveFile();
-                } else if(saveDialog == DialogResult.Cancel)
-                {
-
-                }
-            }
-
-            hasUnsavedProgress = false;
-
             Application.Exit();
         }
 
@@ -375,11 +410,13 @@ namespace notepad
                 m_WriterParameter.Flush();
                 m_WriterParameter.Close();
 
-                ActiveForm.Text = $"{fileName} - Notepad";
-                hasUnsavedProgress = false;
-
                 fileLoaded = true;
                 path = saveFileDialog1.FileName;
+
+                fileName = path.Split('\\')[path.Split('\\').Length - 1];
+                ActiveForm.Text = $"{fileName} - Notepad";
+
+                hasUnsavedProgress = false;
             }
         }
 
