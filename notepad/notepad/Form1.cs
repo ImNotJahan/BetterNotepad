@@ -22,7 +22,7 @@ namespace notepad
         bool[] formattingThings = { false, false, false }; //0 is bold 1 is italic and 2 is underlined
         bool formattingEnabled = false;
 
-        public Form1()
+        public Form1(string startFilePath)
         {
             InitializeComponent();
 
@@ -60,6 +60,11 @@ namespace notepad
             menuStrip1.Renderer = new ToolStripProfessionalRenderer(new CustomColorTable());
 
             CheckSettings(true);
+
+            if(startFilePath != string.Empty)
+            {
+                path = startFilePath;
+            }
         }
 
         private void SettingsMenu(object sender, EventArgs e)
@@ -334,7 +339,7 @@ namespace notepad
             }
         }
 
-        string path;
+        string path = "";
         private void OpenFile(object sender, EventArgs e)
         {
             openFileDialog1.Title = "Open";
@@ -342,6 +347,12 @@ namespace notepad
             openFileDialog1.ShowDialog();
 
             path = openFileDialog1.FileName;
+
+            LoadFile();
+        }
+
+        private void LoadFile()
+        {
             string text = File.ReadAllText(path);
 
             textBox.Text = text;
@@ -350,7 +361,10 @@ namespace notepad
             fileName = path.Split('\\')[path.Split('\\').Length - 1];
             hasUnsavedProgress = false;
 
-            ActiveForm.Text = $"{fileName} - Notepad";
+            if(ActiveForm != null)
+            {
+                ActiveForm.Text = $"{fileName} - Notepad";
+            }
         }
 
         private void WinResizeEnd(object sender, EventArgs e)
@@ -365,6 +379,11 @@ namespace notepad
         {
             loaded = true;
             instance = this;
+
+            if (path != string.Empty)
+            {
+                LoadFile();
+            }
         }
 
         private void NewFile(object sender, EventArgs e)
@@ -422,15 +441,18 @@ namespace notepad
 
         private void TextChange(object sender, EventArgs e)
         {
-            if(textBox.Text != originalText)
+            if(ActiveForm != null)
             {
-                ActiveForm.Text = $"*{fileName} - Notepad";
-                hasUnsavedProgress = true;
-            }
-            else
-            {
-                ActiveForm.Text = $"{fileName} - Notepad";
-                hasUnsavedProgress = false;
+                if (textBox.Text != originalText)
+                {
+                    ActiveForm.Text = $"*{fileName} - Notepad";
+                    hasUnsavedProgress = true;
+                }
+                else
+                {
+                    ActiveForm.Text = $"{fileName} - Notepad";
+                    hasUnsavedProgress = false;
+                }
             }
         }
 
